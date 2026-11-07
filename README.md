@@ -2,7 +2,7 @@
 
 A full-stack app for recording and reviewing personal expenses.
 
-![Expense Tracker screenshot](screenshot.png)
+
 
 ## Features
 

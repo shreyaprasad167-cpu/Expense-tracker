@@ -1,0 +1,324 @@
+#root {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  border: 0;
+  display: block;
+  text-align: left;
+  box-sizing: border-box;
+  background: #f5f7f4;
+  color: #26352d;
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 56px 32px;
+  color: #26352d;
+}
+
+.app h1 {
+  margin: 0 0 6px;
+  color: #173d2e;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.subtitle,
+.empty {
+  color: #718078;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+  padding: 24px 28px;
+  border: 1px solid #dce9df;
+  border-radius: 18px;
+  background: #eaf3ed;
+  color: #52675a;
+}
+
+.summary strong {
+  color: #246747;
+  font-size: 1.7rem;
+}
+
+.expense-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "description description"
+    "category amount"
+    "date date"
+    "submit submit";
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid #e2e8e3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(30, 58, 43, 0.05);
+}
+
+.field-description { grid-area: description; }
+.field-category { grid-area: category; }
+.field-amount { grid-area: amount; }
+.field-date { grid-area: date; }
+
+label {
+  display: grid;
+  gap: 8px;
+  color: #405348;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid #d5dfd7;
+  border-radius: 10px;
+  background: #fff;
+  color: #26352d;
+  font: inherit;
+}
+
+.expense-form input,
+.expense-form select {
+  width: 100%;
+  min-width: 0;
+}
+
+.expense-form select {
+  appearance: none;
+  padding-right: 40px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #62746a 50%),
+    linear-gradient(135deg, #62746a 50%, transparent 50%);
+  background-position:
+    calc(100% - 19px) 21px,
+    calc(100% - 13px) 21px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.field-amount input {
+  color: #205f40;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+input:focus,
+select:focus {
+  outline: 3px solid rgba(55, 130, 87, 0.16);
+  border-color: #43845d;
+}
+
+button {
+  min-height: 48px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #28724d;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+button:hover {
+  background: #205f40;
+  transform: translateY(-1px);
+}
+
+.expense-form > button {
+  grid-column: 1 / -1;
+}
+
+.app > h2 {
+  margin: 34px 0 14px;
+  color: #173d2e;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.app > select,
+.app > input[type="month"] {
+  display: inline-block;
+  width: 230px;
+  min-height: 52px;
+  margin: 0 10px 14px 0;
+  padding: 12px 16px;
+  border: 1px solid #d5dfd7;
+  border-radius: 12px;
+  background: #fff;
+  color: #26352d;
+  font: inherit;
+}
+
+.expense-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.expense-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid #e2e8e3;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(30, 58, 43, 0.035);
+}
+
+.expense-list li > span {
+  flex: 1;
+  min-width: 120px;
+  color: #26352d;
+  font-weight: 600;
+}
+
+.expense-list small {
+  color: #718078;
+  font-size: 0.84rem;
+  font-weight: 400;
+}
+
+.expense-list li > strong {
+  color: #246747;
+  white-space: nowrap;
+}
+
+.delete-button {
+  min-height: 40px;
+  padding: 8px 12px;
+  background: #f2f5f2;
+  color: #526259;
+  font-size: 0.9rem;
+}
+
+.delete-button:hover {
+  background: #e6eee8;
+}
+
+.app [role="alert"] {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #fff0ec;
+  color: #a43d2f;
+}
+
+@media (max-width: 440px) {
+  .app {
+    padding: 36px 18px;
+  }
+
+  .expense-form {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "description"
+      "category"
+      "amount"
+      "date"
+      "submit";
+    padding: 18px;
+  }
+
+  .expense-form > button {
+    grid-column: auto;
+  }
+
+  .app > select,
+  .app > input[type="month"] {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .expense-list li {
+    gap: 10px;
+    padding: 14px;
+  }
+}
+
+@media (min-width: 641px) {
+  .app > select,
+  .app > input[type="month"] {
+    display: inline-block !important;
+    width: 230px !important;
+    vertical-align: top;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.filters select,
+.filters input[type="month"] {
+  display: block;
+  width: min(230px, calc((100vw - 76px) / 2));
+  margin: 0;
+}
+
+@media (max-width: 440px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters select,
+  .filters input[type="month"] {
+    width: 100%;
+  }
+}
+.category-chart {
+  margin: 20px 0 28px;
+  padding: 22px;
+  border: 1px solid #e2e8e3;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.category-chart h3 {
+  margin: 0 0 18px;
+  color: #173d2e;
+}
+
+.category-row {
+  margin-top: 14px;
+}
+
+.category-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: #405348;
+}
+
+.bar-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaf3ed;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #28724d;
+}
